@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width" initial-scale=1.0>
+        <meta name="author" content="Brody">
+        <title>Guessing Game</title>
+    </head>
+    <body> 
+        <script>
+            let playerIsPlaying = true; // inital setting for main loop
+
+            while (playerIsPlaying == true) // this is for the bonus
+            {
+                randomNumber = Math.floor(Math.random() * 10) +1;
+                console.log(randomNumber);
+
+                let playerGuess = prompt("Guess a Number between 1 and 10."); // prompts player and set inital variables
+                let playerWin = false;
+                let playerAttempts = 0;
+
+                while (playerWin == false) // loops until player wins
+                {
+                    playerAttempts += 1;
+                    if (playerGuess == randomNumber) // if player guesses right it prompts again to play
+                    {
+                        playerWin = true;
+
+                        let playerPlaying = prompt(`You guessed it in ${playerAttempts} guesses!\nDo you want to play again? Y/N`);
+                        if (playerPlaying.toLowerCase() != "y" && playerPlaying.toLowerCase() != "yes")
+                        {
+                            playerIsPlaying = false;
+                        }
+                    }
+                    else if(playerGuess > randomNumber) // else it prompts again if guess was too high or low
+                    {
+                        playerGuess = prompt("Your guess was too high, guess again.");
+                    }
+                    else
+                    {
+                        playerGuess = prompt("Your guess was too low, guess again.");
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
